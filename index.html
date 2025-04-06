@@ -3,28 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>This page is protected</title>
+    <title>パスワード保護</title>
+    <style>
+        /* 全体の背景色とフォント設定 */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8; /* 淡い背景色 */
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* メインのフォームボックス */
+        .login-box {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* パスワード入力フォーム */
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* エラーメッセージ */
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h2>Authentication required</h2>
-    <form id="passwordForm">
-        <input type="password" id="password" placeholder="Enter your password here" required>
-        <button type="submit">Continue</button>
-    </form>
+    <div class="login-box">
+        <h2>Authentication required</h2>
+        <form id="passwordForm">
+            <input type="password" id="password" placeholder="Password here" required>
+            <button type="submit">Continue</button>
+        </form>
+        <div class="error" id="error-message"></div>
+    </div>
 
     <script>
-        const correctPassword = "D8kfzsYw"; // ここにパスワードを設定
+        const correctPassword = "D8kfzsYw"; // 使用したいパスワードを設定
         const form = document.getElementById("passwordForm");
+        const errorMessage = document.getElementById("error-message");
 
         form.addEventListener("submit", function(e) {
-            e.preventDefault();
+            e.preventDefault(); // フォーム送信を防ぐ
             const inputPassword = document.getElementById("password").value;
             if (inputPassword === correctPassword) {
-                window.location.href = "https://boudoushi-guide-jpftsjb.gamma.site"; // GammaサイトのURL
+                window.location.href = "https://boudoushi-guide-jpftsjb.gamma.site"; // Gammaサイトへのリダイレクト
             } else {
-                alert("パスワードが違います。");
+                errorMessage.textContent = "パスワードが違います。もう一度試してください。";
             }
         });
     </script>
 </body>
 </html>
+
