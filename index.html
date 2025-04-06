@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パスワード保護</title>
+</head>
+<body>
+    <h2>パスワードを入力してください</h2>
+    <form id="passwordForm">
+        <input type="password" id="password" placeholder="パスワード" required>
+        <button type="submit">送信</button>
+    </form>
+
+    <script>
+        const D8kfzsYw = "yourPasswordHere"; // ここにパスワードを設定
+        const form = document.getElementById("passwordForm");
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const inputPassword = document.getElementById("password").value;
+            if (inputPassword === correctPassword) {
+                window.location.href = "https://boudoushi-guide-jpftsjb.gamma.site"; // GammaサイトのURL
+            } else {
+                alert("パスワードが違います。");
+            }
+        });
+    </script>
+</body>
+</html>
