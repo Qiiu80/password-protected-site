@@ -81,7 +81,7 @@
 
         /* パスワード入力フォーム */
         input[type="password"] {
-            width: 100%;
+            width: calc(100% - 20px);
             padding: 12px;
             margin-bottom: 20px;
             border: 2px solid #ddd;
@@ -123,7 +123,7 @@
     <div class="background"></div> <!-- 背景画像 -->
     <div class="overlay"></div> <!-- オーバーレイ -->
     <div class="login-box">
-        <h2>第80代緑組 5年棒倒し基礎マニュアル</h2>
+        <h2>第80代緑組 5年棒倒し</h2>
         <form id="passwordForm">
             <input type="password" id="password" placeholder="Password here" required>
             <button type="submit">Continue</button>
@@ -142,7 +142,7 @@
             if (inputPassword === correctPassword) {
                 window.location.href = "https://boudoushi-guide-jpftsjb.gamma.site"; // Gammaサイトへのリダイレクト
             } else {
-                errorMessage.textContent = "パスワードが違います。もう一度試してください。";
+                errorMessage.textContent = "The provided password was not accepted.";
             }
         });
     </script>
