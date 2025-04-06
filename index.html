@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>パスワード保護</title>
-    <style>
+ <style>
         /* 全体の背景色とフォント設定 */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #1f7135; /* 淡い背景色 */
+            background: linear-gradient(135deg, #6e7dff, #4e54c8); /* 青から紫へのグラデーション */
             margin: 0;
             height: 100vh;
             display: flex;
@@ -21,10 +21,22 @@
         .login-box {
             background-color: #ffffff;
             padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 6px 10px rgba(0, 0, 0, 0.07); /* 深いシャドウ効果 */
             text-align: center;
             width: 300px;
+            animation: slide-in 1s ease-out; /* アニメーション追加 */
+        }
+
+        @keyframes slide-in {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         h2 {
@@ -35,27 +47,34 @@
         /* パスワード入力フォーム */
         input[type="password"] {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin-bottom: 20px;
-            border: 1px solid #ccc;
+            border: 2px solid #ddd;
             border-radius: 5px;
+            background-color: #fafafa;
             font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="password"]:focus {
+            border-color: #6e7dff; /* フォーカス時のボーダー色 */
         }
 
         button {
             width: 100%;
             padding: 10px;
-            background-color: #007bff;
+            background: linear-gradient(135deg, #6e7dff, #4e54c8); /* グラデーションボタン */
             border: none;
-            border-radius: 5px;
-            color: #fff;
+            border-radius: 10px;
+            color: white;
             font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
         }
 
         button:hover {
-            background-color: #0056b3;
+            background: linear-gradient(135deg, #4e54c8, #6e7dff); /* ホバー時のグラデーション */
+            transform: translateY(-5px); /* ボタンが浮き上がる */
         }
 
         /* エラーメッセージ */
