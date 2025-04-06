@@ -5,27 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>パスワード保護</title>
     <style>
-        /* 全体の背景色とフォント設定 */
+        /* 全体の背景画像とオーバーレイ設定 */
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #A8E063, #66B032); /* 明るい緑のグラデーション */
             margin: 0;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* 背景画像設定 */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://drive.google.com/file/d/1gP-UPsZSgOyfZH9pmxwhb8JBQPfbBUtb/view?usp=share_link') center center no-repeat; /* ここに画像URLを追加 */
+            background-size: cover;
+            z-index: -1;
+        }
+
+        /* オーバーレイ効果（フェード） */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1f7135; /* 指定された緑色 */
+            z-index: 0;
+            animation: fadeIn 2s ease-out; /* フェードインアニメーション */
+        }
+
+        /* フェードインアニメーション */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
 
         /* メインのフォームボックス */
         .login-box {
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.8); /* 半透明の白 */
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 6px 10px rgba(0, 0, 0, 0.07); /* 深いシャドウ効果 */
             text-align: center;
             width: 300px;
             animation: slide-in 1s ease-out; /* アニメーション追加 */
+            position: relative; /* z-indexを適用するためにpositionをrelativeに */
         }
 
         @keyframes slide-in {
@@ -83,11 +118,12 @@
             margin-top: 10px;
         }
     </style>
-
 </head>
 <body>
+    <div class="background"></div> <!-- 背景画像 -->
+    <div class="overlay"></div> <!-- オーバーレイ -->
     <div class="login-box">
-        <h2>Authentication required</h2>
+        <h2>第80代緑組 5年棒倒し基礎マニュアル</h2>
         <form id="passwordForm">
             <input type="password" id="password" placeholder="Password here" required>
             <button type="submit">Continue</button>
@@ -96,7 +132,7 @@
     </div>
 
     <script>
-        const correctPassword = "D8kfzsYw"; // 使用したいパスワードを設定
+        const correctPassword = "secretPassword"; // 使用したいパスワードを設定
         const form = document.getElementById("passwordForm");
         const errorMessage = document.getElementById("error-message");
 
@@ -106,7 +142,7 @@
             if (inputPassword === correctPassword) {
                 window.location.href = "https://boudoushi-guide-jpftsjb.gamma.site"; // Gammaサイトへのリダイレクト
             } else {
-                errorMessage.textContent = "The provided password was not accepted.";
+                errorMessage.textContent = "パスワードが違います。もう一度試してください。";
             }
         });
     </script>
